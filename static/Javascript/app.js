@@ -22,55 +22,48 @@ function buildTable(data) {
     });
   });
 }
-
 // 1. Create a variable to keep track of all the filters as an object.
 // let text = d3.select("#text");
-var filters = null;
+var filters = {};
 
 // 3. Use this function to update the filters. 
 function updateFilters() {
 
     // 4a. Save the element that was changed as a variable.
-    data.forEach(function(elementChange) {
-      let element = d3.select(elementChange).property("type");
-    });
-
+    let changedElement = d3.select(this)
+    // console.log(element);
     // 4b. Save the value that was changed as a variable.
-    data.forEach(function(valueChange) {
-      let value=d3.select(valueChange).property("value");
-    });
+    let values = changedElement.property("value");
     // 4c. Save the id of the filter that was changed as a variable.
-    data.forEach(function(idChange) {
-      let id = d3.select(idChange).property("id");
-    });
-  
+    let id = changedElement.attr("id");
+
     // 5. If a filter value was entered then add that filterId and value
     // to the filters list. Otherwise, clear that filter from the filters object.
-    if ((value) {
-      filteredData = filteredData
-    })
+    if (values) {
+      filters[id] = values;
+    }
+    else
+      delete filters[id];
   
     // 6. Call function to apply all filters and rebuild the table
-    filterTable();
-  
+  filterTable();
   }
   
   // 7. Use this function to filter the table when data is entered.
   function filterTable() {
-  
     // 8. Set the filtered data to the tableData.
-    
-  
+    let filteredData = data;
     // 9. Loop through all of the filters and keep any data that
     // matches the filter values
-    
+    if (filters) {
+        let filteredData = filteredData.filter(row => row.value == values);
+    };
   
+    // console.log(filteredData);
     // 10. Finally, rebuild the table using the filtered data
-    
-  }
-  
+    buildTable(filteredData);
+  };
   // 2. Attach an event to listen for changes to each filter
-  
-  
+  d3.selectAll("input").on("change", updateFilters);
   // Build the table when the page loads
   buildTable(tableData);
