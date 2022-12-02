@@ -10,3 +10,13 @@ When website is complete, viewers will be able to read a brief description of th
 
 ![Filter Search](https://github.com/JGarza4903/UFO-s/blob/main/static/Images/Filter%20Search.png)
 
+## Summary
+Although the viewer is able to filter through her data, the webpage still looks messy when displaying the full dataset across the length of several pages. A possible option would be to put the table in a scrolling field to tidy up the page.
+
+What would really bring the webpage together are visuals of how many sightings have been seen in each state in comparison, either in a bar chart or histogram.
+
+## Resources
+* html
+* Javascript
+* d3.select()
+* VScode
